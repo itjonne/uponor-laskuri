@@ -1,6 +1,6 @@
 const Inputs = ({inputs}) => {
   return (
-    <div>
+    <div className="form">
       {inputs}
     </div>
   )

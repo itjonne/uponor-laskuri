@@ -14,7 +14,8 @@
     "react-scripts": "4.0.3",
     "read-excel-file": "^5.2.9",
     "web-vitals": "^1.1.2",
-    "xlsx": "^0.17.1"
+    "xlsx": "^0.17.1",
+    "xlsx-calc": "^0.6.9"
   },
   "scripts": {
     "start": "react-scripts start",
