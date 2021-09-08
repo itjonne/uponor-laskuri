@@ -1,7 +1,6 @@
 import Companies from "./Companies";
 
 const Outputs = ({outputs}) => {
-  console.log(outputs);
   const keys = Object.keys(outputs);
 
   const calculateClassName = (position, length) => {
@@ -10,8 +9,8 @@ const Outputs = ({outputs}) => {
 
   return (
     <div>
-      {keys.map(key => (
-        <div>
+      {keys.map((key,j) => (
+        <div key={`output-${j}`}>
         <div className="otsikko">{key}</div>
         <div className="row">
           <div className="column">

@@ -10,13 +10,12 @@ const Calculator = () => {
   const [inputs, setInputs] = useState([]);
   const [outputs, setOutputs] = useState([]);
   const [workbook, setWorkbook] = useState(null);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => setInputsToExcel(data);
 
   const setInputsToExcel = (data) => {
     if (workbook) {
       const worksheet = workbook.Sheets["Lähtötiedot"];
-      console.log(data);
       for (let key of Object.keys(data)) {
         worksheet[key].v = parseFloat(data[key]);
         worksheet[key].w = data[key]
@@ -30,8 +29,8 @@ const Calculator = () => {
 
   // https://github.com/fabiooshiro/xlsx-calc
   const getOutputsFromExcel = () => {
+    // Tää ajaa kaikki funktiot
     XLSX_CALC(workbook);
-    console.log(workbook);
 
     // Kopataan kaikki kilpailijat
     // Otsikko rivillä 33
@@ -99,7 +98,6 @@ const Calculator = () => {
         const data = [];
         for (let value of kustannuksetArray) {
           const values = worksheet[`${companies[company].values}${value}`].v;
-          console.log(worksheet[`${companies[company].values}${value}`])
           data.push(parseInt(values));
         }
         yritys['nimi'] = nimi;
@@ -149,9 +147,6 @@ const Calculator = () => {
         const data = [];
         for (let value of eroArray) {
           let values = 0;
-          console.log('eroarray', worksheet[`${companies[company].values}${value}`]);
-          console.log(`${companies[company].values}${value}`);
-
           
           if (worksheet[`${companies[company].values}${value}`] === undefined) {
             values = 0;   
@@ -215,7 +210,7 @@ const Calculator = () => {
         putket.push(createInput(worksheet[createLocationString('C', value)], worksheet[createLocationString('D', value)], createLocationString('D', value)));    
       }
       // Tehdään blocki
-      const putketBlock = <div className="inputBlock">{putket}</div>;
+      const putketBlock = <div key="putketBlock" className="inputBlock">{putket}</div>;
       inputsArray.push(putketBlock);
 
       // ====== Lämpötilat ========
@@ -226,7 +221,7 @@ const Calculator = () => {
       for (let value of lampotilaArray) {
         lampotilat.push(createInput(worksheet[createLocationString('F', value)], worksheet[createLocationString('G', value)], createLocationString('G', value)));
       }
-      const lampotilatBlock = <div className="inputBlock">{lampotilat}</div>;
+      const lampotilatBlock = <div key="lampotilatBlock" className="inputBlock">{lampotilat}</div>;
       inputsArray.push(lampotilatBlock);
 
       // ======= Käyttöajat =======
@@ -237,7 +232,7 @@ const Calculator = () => {
       for (let value of kayttoajatArray) {
         kayttoajat.push(createInput(worksheet[createLocationString('F', value)], worksheet[createLocationString('G', value)], createLocationString('G', value)));
       }
-      const kayttoajatBlock = <div className="inputBlock">{kayttoajat}</div>;
+      const kayttoajatBlock = <div key="kayttoajatBlock" className="inputBlock">{kayttoajat}</div>;
       inputsArray.push(kayttoajatBlock);
 
       // ====== Energian hinta =======
@@ -247,7 +242,7 @@ const Calculator = () => {
       for (let value of energianHintaArray) {
         energianHinta.push(createInput(worksheet[createLocationString('F', value)], worksheet[createLocationString('G', value)], createLocationString('G', value)));
       }
-      const energianHintaBlock = <div className="inputBlock">{energianHinta}</div>;
+      const energianHintaBlock = <div key="energianhintaBlock" className="inputBlock">{energianHinta}</div>;
       inputsArray.push(energianHintaBlock);
       setInputs(inputsArray);
     }
@@ -256,7 +251,7 @@ const Calculator = () => {
       const labelValue = label.v ? label.v : "undefined";
       const valueValue = value.v ? value.v : 0;
   
-      return <div className="row"><label>{labelValue}</label><input defaultValue={valueValue} {...register(location, {min: 0, max: 99999})}  /></div> 
+      return <div className="row" key={`${label}-${location}`}><label>{labelValue}</label><input defaultValue={valueValue} {...register(location, {min: 0, max: 99999})}  /></div> 
     }
 
     readExcel(); 
@@ -271,7 +266,7 @@ const Calculator = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Inputs inputs={inputs} />
         <input className="submit" type="submit" value="Laske"></input>
-        {errors && <p className="red">Syöttövirhe</p>}
+        {Object.keys(errors).length > 0 && <p className="red">Syöttövirhe</p>}
       </form>
       <Outputs outputs={outputs} />
     </div>
