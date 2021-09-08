@@ -1,21 +1,20 @@
 {
   "files": {
     "main.css": "/uponor-laskuri/static/css/main.0b571379.chunk.css",
-    "main.js": "/uponor-laskuri/static/js/main.fe3cb117.chunk.js",
-    "main.js.map": "/uponor-laskuri/static/js/main.fe3cb117.chunk.js.map",
+    "main.js": "/uponor-laskuri/static/js/main.8a9920c4.chunk.js",
+    "main.js.map": "/uponor-laskuri/static/js/main.8a9920c4.chunk.js.map",
     "runtime-main.js": "/uponor-laskuri/static/js/runtime-main.7186d472.js",
     "runtime-main.js.map": "/uponor-laskuri/static/js/runtime-main.7186d472.js.map",
-    "static/js/2.7862b94a.chunk.js": "/uponor-laskuri/static/js/2.7862b94a.chunk.js",
-    "static/js/2.7862b94a.chunk.js.map": "/uponor-laskuri/static/js/2.7862b94a.chunk.js.map",
+    "static/js/2.5237ffd0.chunk.js": "/uponor-laskuri/static/js/2.5237ffd0.chunk.js",
+    "static/js/2.5237ffd0.chunk.js.map": "/uponor-laskuri/static/js/2.5237ffd0.chunk.js.map",
     "index.html": "/uponor-laskuri/index.html",
     "static/css/main.0b571379.chunk.css.map": "/uponor-laskuri/static/css/main.0b571379.chunk.css.map",
-    "static/js/2.7862b94a.chunk.js.LICENSE.txt": "/uponor-laskuri/static/js/2.7862b94a.chunk.js.LICENSE.txt",
-    "static/media/laskuri.694ed339.xlsx": "/uponor-laskuri/static/media/laskuri.694ed339.xlsx"
+    "static/js/2.5237ffd0.chunk.js.LICENSE.txt": "/uponor-laskuri/static/js/2.5237ffd0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.7186d472.js",
-    "static/js/2.7862b94a.chunk.js",
+    "static/js/2.5237ffd0.chunk.js",
     "static/css/main.0b571379.chunk.css",
-    "static/js/main.fe3cb117.chunk.js"
+    "static/js/main.8a9920c4.chunk.js"
   ]
 }
